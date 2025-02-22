@@ -1,13 +1,12 @@
-FROM node:18
+FROM node:22
 
 WORKDIR /app
 
 COPY *.json ./
-COPY yarn.lock ./
 
-RUN yarn install --frozen-lockfile
+RUN npm ci
 
 COPY . .
 
 EXPOSE 8080
-CMD [ "yarn", "run", "start:dev"]
+CMD [ "npm", "run", "start:dev"]
